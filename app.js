@@ -24,6 +24,7 @@ app.post('/', (req, res) => {
     // User object destructuring to extract required data from body
     { customerName, cin, brand, rmc } = req.body;
 
+    let generatedQuery = `MATCH (n)-[r:${something_here}]->(m) RETURN n,r,m`;
     //   Structure data into required format
     let data = {
         customerName: customerName,
@@ -36,7 +37,7 @@ app.post('/', (req, res) => {
 
     //   Send data to view which will render graph
     res.render('graph', {
-        data
+        generatedQuery
     })
 
 });
